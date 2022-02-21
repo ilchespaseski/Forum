@@ -1,0 +1,102 @@
+body {
+    background-image: url(../img/background.jpg);
+}
+
+.reg-header{
+    padding-bottom: 30px;
+}
+
+.login-header {
+    padding-bottom: 30px;
+}
+
+.hav-acc {
+    float:right;
+    color:dimgrey;
+}
+.hav-acc:hover {
+    color:grey;
+}
+
+.fill-alert {
+    float:right;
+    float:center;
+    color:red;
+    font-size: 15px;
+    display: none;
+}
+.usrpwwrong {
+    color:red;
+    display: none;
+}
+.MatchAlert {
+    color:red;
+    display:none;
+}
+.registration-btn {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#logout {
+margin: 5px;
+}
+.pagination {
+    background-color: grey !important;
+}
+.topic-section {
+    margin-top: 10px;
+    background-color: #ffffff80;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 5px;
+}
+.home-header {
+  background-color: #ffffff80;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+#tpcbtn{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.topic-info {
+    border-bottom: 1px solid black;
+}
+
+.page-item.active .page-link {
+    background-color: #bb2d3b !important;
+
+    border-color: #bb2d3b !important;
+}
+
+
+@media screen and (min-width: 480px) {
+
+    .login {
+        width: 40%;
+    }
+    .login {
+        padding-top: 150px;
+    }
+}
