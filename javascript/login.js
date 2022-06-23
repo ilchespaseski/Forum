@@ -13,7 +13,7 @@ $("#submit").click(function (){
         },
         cache: false,
         success: function (data){
-            if(data=='false'){
+            if(data=='false'){false
                 $("#usrpwinccorect").css('display','revert');
             }
             else {
