@@ -1,5 +1,5 @@
 body {
-    background-image: url(../img/background.jpg);
+background-color: #f5f2ea;
 }
 
 .reg-header{
@@ -62,7 +62,7 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
-#tpcbtn{
+.tpcbtn{
     background-color: Transparent;
     background-repeat:no-repeat;
     border: none;
@@ -89,12 +89,69 @@ tr:nth-child(even) {
 
     border-color: #bb2d3b !important;
 }
+.card-topic {
+
+}
+.card-topic {
+    background-color: #ffffff80 !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.login {
+    margin-top: 100px;
+    border-radius: 10%;
+    width: 200px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 50px;
+    padding-bottom: 100px;
+    font-family:Comic Sans MS, Comic Sans, cursive;
 
 
-@media screen and (min-width: 480px) {
+}
+
+.img {
+
+}
+.logo {
+    font-family: Brush Script MT, cursive;
+    font-size: 2em !important;
+    color: black;
+}
+.form-control{
+    border: 0 !important;
+    outline: none !important;
+    background: transparent !important;
+    border-bottom: 1px solid black !important;
+    border-radius: 0 !important;
+}
+#submit {
+    width: 100%;
+    background-color: #fdc886;
+    font-family:Comic Sans MS, Comic Sans, cursive;
+    font-weight: 600;
+    color: black;
+    border: 0 !important;
+    max-height: 100%;
+}
+.test {
+    float: right;
+}
+.login {
+    background-color: whitesmoke;
+}
+@media screen and (min-width: 600px) {
 
     .login {
         width: 40%;
+    }
+    .login {
+        padding-top: 150px;
+    }
+}
+@media screen and (max-width: 900px) {
+
+    .login {
+        width: 100% !important;
     }
     .login {
         padding-top: 150px;

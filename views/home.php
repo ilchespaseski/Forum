@@ -42,18 +42,11 @@ if(!isset($_SESSION["iflogedin"]) || $_SESSION["iflogedin"] !== true){
             <a class="btn btn-success col-2" id="createnewtopic" href="#ex1" rel="modal:open">Add a new topic</a>
         </div>
 
-        <table>
-            <thead>
-            <tr>
-                <th>Topic</th>
-                <th>Created By</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody id="container">
 
-            </tbody>
-        </table>
+            <div id="container" class="row">
+
+            </div>
+
 
     </div>
 

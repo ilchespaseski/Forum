@@ -9,8 +9,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../javascript/register.js" type="text/javascript"></script>
 </head>
-<body>
+<body style="background-color: #f5f2ea !important">
 <div class="container">
+    <div class="img"></div>
     <form class="login mx-auto align-middle">
         <div class="text-center h2 reg-header">Sign Up</div>
         <div class="mb-3">

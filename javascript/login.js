@@ -1,19 +1,28 @@
+// Get the input field
+var input = document.getElementById("Password");
 
-$("#submit").click(function (){
+input.addEventListener("keypress", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+        Checking();
+    }
+});
 
+function Checking(){
     var username = $("#userName").val();
     var password = $("#Password").val();
 
     $.ajax({
         type:"POST",
-        url:"../Database/DBLogin.php",
+        url:"../Database/Autoload.php",
         data: {
             username: username,
-            password: password
+            password: password,
+            query:'Login'
         },
         cache: false,
         success: function (data){
-            if(data=='false'){false
+            if(data=='false'){
                 $("#usrpwinccorect").css('display','revert');
             }
             else {
@@ -24,6 +33,10 @@ $("#submit").click(function (){
             console.log(xhr);
         }
     });
+}
 
+$("#submit").click(function (){
+
+   Checking();
 
 })

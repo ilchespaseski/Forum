@@ -1,6 +1,5 @@
 $(document).ready(function (){
     topicname = sessionStorage.getItem("topicname");
-    console.log(topicname);
 
 
     var $pagination = $('#pagination'),
@@ -11,16 +10,16 @@ $(document).ready(function (){
         page = 1,
         totalPages = 0;
     $.ajax({
-        url: "../Database/Getposts.php",
+        url: "../Database/Autoload.php",
         async: true,
         dataType: 'json',
         type:'POST',
         data: {
-            topicname: topicname
+            topicname: topicname,
+            query: 'GetPosts'
         },
         success: function (data) {
             records = data;
-            console.log(records);
             totalRecords = records.length;
             totalPages = Math.ceil(totalRecords / recPerPage);
             if(totalRecords>0) {
@@ -62,33 +61,6 @@ $(document).ready(function (){
         });
     }
     let obj;
-    /*
-    $.ajax({
-        async: false,
-        type:"POST",
-        url:"../Database/Getposts.php",
-        data:{
-            topicname: topicname
-        },
-        success: function (data){
-             obj = jQuery.parseJSON(data);
-            obj.forEach(element => $("#post-container").append(
-                '<tr class="container"><td><button id="tpcbtn" type="button" ' +
-                'value="'+ element.body +'" >' + element.body +
-                '</button></td><td>'+element.author+'</td><td>')    );
-
-            $("#post-header").append('<span class="h5 col-10"> Name of topic: '+topicname+'</span>'+'<a class="btn btn-success col-2" ' +
-                'id="createnewtopic" href="#ex1" rel="modal:open">Add a new post</a>');
-
-        },
-
-        error: function (xhr, status, error){
-            console.error(xhr);
-        }
-    });
-
-
-*/
 
 
 
@@ -96,13 +68,13 @@ $(document).ready(function (){
         post = $("#post").val();
         $.ajax({
             type:"POST",
-            url:"../Database/DBCreatepost.php",
+            url:"../Database/Autoload.php",
             data:{
                 post: post,
-                topicname: topicname
+                topicname: topicname,
+                query: 'CreatePost'
             },
             success: function (data){
-                console.log(data);
                 location.reload()
                 },
             error: function (xhr, status, error){
@@ -115,7 +87,10 @@ $("#logout").click(function (){
 
     $.ajax({
         type:"POST",
-        url:"../Database/DBLogout.php",
+        url:"../Database/Autoload.php",
+        data: {
+            query: 'Logout',
+        },
         success: function (data){
             location.reload();
         },

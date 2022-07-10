@@ -37,10 +37,11 @@ $("#submit").click(function (){
     } else {
         $.ajax({
             type:"POST",
-            url:"../Database/DBRegister.php",
+            url:"../Database/Autoload.php",
             data: {
                 username: username,
                 password: password,
+                query: 'Register'
             },
             cache: true,
             success: function (data){

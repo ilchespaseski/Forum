@@ -1,17 +1,17 @@
 <?php
 class ForumController
 {
-    private $conn;
+    private  $conn;
 
     public function __construct() {
         $db = new DatabaseConnection;
         $this->conn = $db->conn;
     }
 
-    public function Register($inputData){
+    public function Register(){
 
-        $username = $inputData['username'];
-        $password = $inputData['password'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
 
         $sql = "INSERT INTO users (Username,Password) 
@@ -31,9 +31,9 @@ class ForumController
         $this->conn->close();
     }
 
-    public function Login($inputData){
-        $username = $inputData['username'];
-        $password = $inputData['password'];
+    public function Login(){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
         $sql = "SELECT id, username, password FROM users WHERE username = '$username'";
 
@@ -52,9 +52,9 @@ class ForumController
         }
     }
 
-    public function CreateTopic($inputData)
+    public function CreateTopic()
     {
-        $tpcname = $inputData['tpcname'];
+        $tpcname = $_POST['tpcname'];
         $author = $_SESSION['user'];
 
         $sql = "INSERT INTO topics (author,topicname) 
@@ -73,11 +73,22 @@ class ForumController
         $sql = "SELECT * FROM topics";
 
         $result = $this->conn->query($sql);
-        return $result;
+        $topics = array();
+        $i=0;
+
+        foreach ($result as $row) {
+            $topics[$i] = new stdClass();
+            $topics[$i]->author = $row['author'];
+            $topics[$i]->topicname = $row['topicname'];
+            $topics[$i]->id = $row['id'];
+            $i++;
+        }
+
+        echo json_encode($topics);
     }
 
-    public function DeleteTopics($inputData){
-        $tpcid = $inputData['tpcid'];
+    public function DeleteTopics(){
+        $tpcid = $_POST['tpcid'];
 
         $sql = "DELETE FROM topics
                 WHERE id = $tpcid ";
@@ -87,9 +98,9 @@ class ForumController
         return $result;
     }
 
-    public function CreatePost($inputData){
-        $post = $inputData['post'];
-        $topicname = $inputData['topicname'];
+    public function CreatePost(){
+        $post = $_POST['post'];
+        $topicname = $_POST['topicname'];
 
         $sql = "SELECT * FROM topics";
         $result = $this->conn->query($sql);
@@ -108,8 +119,8 @@ class ForumController
 
         return $result;
     }
-    public function GetTopicId($inputData) {
-        $topicname = $inputData;
+    public function GetTopicId() {
+        $topicname = $_POST['topicname'];
         $sql = "SELECT * FROM topics";
 
         $result = $this->conn->query($sql);
@@ -129,7 +140,29 @@ class ForumController
 
 
         $result = $this->conn->query($sql);
-        return $result;
+        $posts = array();
+
+        $topicid = $this->GetTopicId();
+
+        $i=0;
+        foreach ($result as $row) {
+            if($row['topic_id']==$topicid) {
+                $posts[$i] = new stdClass();
+                $posts[$i]->author = $row['body'];
+                $posts[$i]->body = $row['author'];
+                $i++;
+            }
+        }
+
+        echo json_encode($posts);
+    }
+    public function Logout(){
+
+        $_SESSION = array();
+
+        session_destroy();
+        header("location: ../views/index.php");
+        exit;
     }
 }
 ?>
